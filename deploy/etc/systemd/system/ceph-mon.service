@@ -1,0 +1,12 @@
+[Unit]
+Description=Ceph object storage daemon mon
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/sysconfig/ceph/ceph-mon
+ExecStart=/etc/sysconfig/ceph/mon.sh
+ExecReload=/bin/kill -HUP $MAINPID
+TasksMax=infinity
+
+[Install]
+WantedBy=multi-user.target
