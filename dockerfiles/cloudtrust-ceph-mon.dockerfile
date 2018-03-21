@@ -17,7 +17,8 @@ RUN git checkout ${ceph_service_git_tag} && \
     install -v -m644 -o root -g root deploy/etc/systemd/system/ceph-mon.service /etc/systemd/system/ceph-mon.service
 
 WORKDIR /cloudtrust/config
-RUN install -v -m6444 -o root -g root deploy/etc/systemd/system/ceph_mon_init.service /etc/systemd/system/ceph_mon_init.service
+RUN git checkout ${config_git_tag}
+    install -v -m6444 -o root -g root deploy/etc/systemd/system/ceph_mon_init.service /etc/systemd/system/ceph_mon_init.service
 
 WORKDIR /cloudtrust/ceph-tools
 RUN git checkout ${ceph_tools_git_tag} && \
