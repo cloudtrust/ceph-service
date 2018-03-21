@@ -3,7 +3,7 @@ Description=Ceph object storage daemon mon
 After=network-online.target
 
 [Service]
-EnvironmentFile=/etc/sysconfig/ceph/ceph-mon
+Environment=CLUSTER=ceph
 ExecStart=/etc/sysconfig/ceph/mon.sh
 ExecReload=/bin/kill -HUP $MAINPID
 TasksMax=infinity

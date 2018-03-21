@@ -15,8 +15,6 @@ RUN git checkout ${ceph_service_git_tag} && \
 
 WORKDIR /cloudtrust/ceph-tools
 RUN git checkout ${ceph_tools_git_tag} && \
-    rm -rf /etc/sysconfig/ceph && \
-    install -v -m644 -d -o ceph -g ceph /etc/sysconfig/ceph && \ 
-    install -v -m644 -o ceph -g ceph deploy/etc/sysconfig/ceph/ceph-osd /etc/sysconfig/ceph/ceph-osd && \
-    install -v -m755 -o ceph -g ceph deploy/etc/sysconfig/ceph/osd.sh /etc/sysconfig/ceph/osd.sh && \
+    install -d -v -m755 -o ceph -g ceph /cloudtrust/ceph-scripts && \
+    install -v -m755 -o ceph -g ceph deploy/cloudtrust/ceph-scripts/osd.sh /cloudtrust/ceph-scripts/osd.sh && \
     systemctl enable ceph-osd.service

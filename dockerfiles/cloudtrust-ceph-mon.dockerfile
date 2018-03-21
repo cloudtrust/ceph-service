@@ -22,9 +22,7 @@ RUN git checkout ${config_git_tag} && \
 
 WORKDIR /cloudtrust/ceph-tools
 RUN git checkout ${ceph_tools_git_tag} && \
-    rm -rf /etc/sysconfig/ceph && \
-    install -v -m644 -d -o ceph -g ceph /etc/sysconfig/ceph && \ 
-    install -v -m644 -o ceph -g ceph deploy/etc/sysconfig/ceph/ceph-mon /etc/sysconfig/ceph/ceph-mon && \
-    install -v -m755 -o ceph -g ceph deploy/etc/sysconfig/ceph/mon.sh /etc/sysconfig/ceph/mon.sh && \
+    install -d -v -m755 -o ceph -g ceph /cloudtrust/ceph-scripts && \
+    install -v -m755 -o ceph -g ceph deploy/cloudtrust/ceph-scripts/mon.sh /cloudtrust/ceph-scripts/mon.sh && \
     systemctl enable ceph-mon.service && \
     systemctl enable ceph_mon_init.service
