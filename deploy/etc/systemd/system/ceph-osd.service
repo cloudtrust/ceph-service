@@ -1,0 +1,13 @@
+[Unit]
+Description=Ceph object storage daemon osd
+After=network-online.target
+
+[Service]
+Environment=CLUSTER=ceph
+ExecStart=/etc/sysconfig/ceph/osd.sh
+ExecReload=/bin/kill -HUP $MAINPID
+TasksMax=infinity
+
+[Install]
+WantedBy=multi-user.target
+
