@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 Environment=CLUSTER=ceph
-ExecStart=/cloudtrust/ceph-scripts/ceph/osd.sh
+ExecStart=/cloudtrust/ceph-scripts/osd.sh
 ExecReload=/bin/kill -HUP $MAINPID
 TasksMax=infinity
 
