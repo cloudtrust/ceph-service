@@ -5,7 +5,9 @@ ARG config_repo
 ARG config_git_tag
 ARG ceph_tools_git_tag
 
-RUN dnf install -y ceph-mon ceph-common
+RUN dnf update && \
+    dnf install -y ceph-mon ceph-common && \
+    dnf clean all
 
 WORKDIR /cloudtrust
 RUN git clone git@github.com:cloudtrust/ceph-tools.git && \

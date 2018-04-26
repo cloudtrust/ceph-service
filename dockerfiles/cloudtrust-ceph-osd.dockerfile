@@ -3,7 +3,9 @@ FROM cloudtrust-baseimage:f27
 ARG ceph_service_git_tag
 ARG ceph_tools_git_tag
 
-RUN dnf install -y ceph-osd ceph-common
+RUN dnf update -y && \
+    dnf install -y ceph-osd ceph-common && \
+    dnf clean all
 
 WORKDIR /cloudtrust
 RUN git clone git@github.com:cloudtrust/ceph-tools.git && \
