@@ -5,7 +5,7 @@ ARG config_repo
 ARG config_git_tag
 ARG ceph_tools_git_tag
 
-RUN dnf update && \
+RUN dnf update -y && \
     dnf install -y ceph-mon ceph-common && \
     dnf clean all
 
