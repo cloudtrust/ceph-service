@@ -3,8 +3,11 @@ FROM cloudtrust-baseimage:f27
 ARG ceph_service_git_tag
 ARG ceph_tools_git_tag
 
+ARG ceph-osd_version=1:12.2.7-1.fc27
+ARG ceph-common_version=1:12.2.7-1.fc27
+
 RUN dnf update -y && \
-    dnf install -y ceph-osd ceph-common && \
+    dnf install -y ceph-osd-$ceph-osd_version ceph-common-$ceph-common_version && \
     dnf clean all
 
 WORKDIR /cloudtrust
