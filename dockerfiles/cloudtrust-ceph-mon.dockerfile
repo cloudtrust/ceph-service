@@ -5,8 +5,11 @@ ARG config_repo
 ARG config_git_tag
 ARG ceph_tools_git_tag
 
+ARG ceph-mon_version=1:12.2.7-1.fc27
+ARG ceph-common_version=1:12.2.7-1.fc27
+
 RUN dnf update -y && \
-    dnf install -y ceph-mon ceph-common && \
+    dnf install -y ceph-mon-$ceph-mon_version ceph-common-$ceph-common_version && \
     dnf clean all
 
 WORKDIR /cloudtrust
